@@ -27,6 +27,9 @@ main {
 	width:50%;
 }
 
+.buttons {
+	margin-top: 10px;
+}
 .input button {
 	display:inline;
 	padding:.5em 1.5em;
