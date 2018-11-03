@@ -17,9 +17,10 @@ html, body {
 main {
 	color:#0c5449;
 	padding-left:10px;
-	padding-top:250px;
 	margin-left:50px;
 	margin-right:50px;
+	padding-bottom:50px;
+	padding-top: 100px;
 }
 
 .input {
@@ -30,6 +31,7 @@ main {
 .buttons {
 	margin-top: 10px;
 }
+
 .input button {
 	display:inline;
 	padding:.5em 1.5em;
@@ -95,6 +97,8 @@ footer a:hover {
 	background-color:#F2F2F2;
 	border: none;
 	border-bottom: 3px solid #F2CE57;
+	color:#0c5449;
+
 }
 
 @font-face {
