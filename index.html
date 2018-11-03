@@ -1,26 +1,45 @@
 <!DOCTYPE html>
 
-<html>
-  <head>
-    <title>Unit Converter (Temp title)</title>
-    <script src="jquery-3.3.1.min.js"></script>
-  </head>
-  
-  <body>
-  
-  
-<center><h1>Welcome to the natural language unit converter</h1>
-<p>(This page is a work in progress. All design is temporary.)</p>
- 
-    
-  <p>Convert </p> document.getElementById("myText").value = "Johnny Bravo"; 
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
+<html lang=en>
+	<head>
+		<title>Natural Language Unit Converter</title>
 
-    
-<p><a href="https://wayne.edu/people/fy7555/">Dr. Zichun Zhong, our overseeing professor</a></p></center>
-  </body>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<script src="jquery-3.3.1.min.js"></script>
+		<link rel="stylesheet" href="styles.css">
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 
+	</head>
 
+	<body id="device size">
+		<div class="wrapper">
+			<header>
+				Natural Language Unit Converter
+			</header>
+			<main id="app">
+				<div id="valign">
+					<div class="input">
+						<input type="text" v-model="input" id="input" placeholder="Enter Conversion Here"></input>
+						<br/>
+						<div class="buttons">
+							<button type="button" name="Convert" @mousedown="convert">Convert</button>
+							<button type="button" name="Clear" @mousedown="clear">Clear</button>
+						</div>
+					</div>
+					<div class="output">
+						{{output}}
+					</div>
+				</div>
+			</main>
+		</div>
+		<footer>
+			<ul>
+				<li><a href="https://wayne.edu/people/fy7555/">Advising Professor</a></li>
+			</ul>
+			<div class="copyright">&copy; Glantz &amp; Reiber 2018 </div>
+		</footer>
+	</body>
+
+		<script src="app.js"></script>
 </html>
