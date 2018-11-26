@@ -18,11 +18,11 @@
 			</header>
 			<main id="app">
 					<div class="input">
-						<input type="text" v-model="input" id="input" placeholder="Enter Conversion Here"></input>
+						<input type="text" @keydown.enter="convert" v-model="input" id="input" placeholder="Enter Conversion Here"></input>
 						<br/>
 						<div class="buttons">
-							<button type="button" name="Convert" @mousedown="convert">Convert</button>
-							<button type="button" name="Clear" @mousedown="clear">Clear</button>
+							<button type="button" name="Convert" @keydown.enter="convert" @mousedown="convert">Convert</button>
+							<button type="button" name="Clear" @keydown.enter="clear" @mousedown="clear">Clear</button>
 						</div>
 					</div>
 					<div class="output">

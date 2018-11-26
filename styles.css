@@ -47,6 +47,15 @@ main {
 	background-color:#D1D1D1;
 }
 
+#input {
+	width: 100%;
+	font-size:20px;
+	background-color:#F2F2F2;
+	border: none;
+	border-bottom: 3px solid #F2CE57;
+	color:#0c5449;
+}
+
 .output{
 	width:49%;	
 	display:inline-block;
@@ -89,16 +98,6 @@ footer a:hover {
 	text-align:center;
 	font-size:12px;
 	font-style:italic;
-}
-
-#input {
-	width: 100%;
-	font-size:20px;
-	background-color:#F2F2F2;
-	border: none;
-	border-bottom: 3px solid #F2CE57;
-	color:#0c5449;
-
 }
 
 @font-face {
