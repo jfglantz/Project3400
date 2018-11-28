@@ -18,7 +18,7 @@
 			</header>
 			<main id="app">
 					<div class="input">
-						<input type="text" @keydown.enter="convert" v-model="input" id="input" placeholder="Enter Conversion Here"></input>
+						<input type="text" @change="dump" @keydown.enter="convert" v-model="input" id="input" placeholder="5 miles to feet"></input>
 						<br/>
 						<div class="buttons">
 							<button type="button" name="Convert" @keydown.enter="convert" @mousedown="convert">Convert</button>
