@@ -82,7 +82,7 @@ main {
 	font-family:Lato;
 	color:#0c5449;
 }
-#buttons button:hover {
+#buttons button:hover, #buttons button:focus {
 	background-color:#D1D1D1;
 }
 
