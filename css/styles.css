@@ -7,7 +7,7 @@ header {
 }
 
 html, body {
-	background-color:#F2F2F2;
+	background-color:#FFFFFF;
 	height:100%;
 	margin:0;
 }
@@ -23,16 +23,55 @@ main {
 	padding-top: 100px;
 }
 
-.input {
+#input, #output {
 	display: inline-block;
-	width:50%;
+	width:40%;
 }
 
-.buttons {
+#input {
+	padding-right:40px;
+}
+
+.formItem{
+	display:block;
+}
+
+.label, .formItem .error {
+	padding-top:3px;
+	display:inline-block;
+	font-size:12px;
+}
+
+.label {
+	float:left;
+}
+#inValLabel {
+	padding-bottom:30px;
+}
+
+.formItem .error {
+	float:right;
+}
+
+.error  {
+	color:#cc0000;
+}
+
+.inputError {
+	border-color:#cc0000;
+} 
+
+#outVal {
+	padding-bottom:37px;
+	font-size:30px;
+	text-align:right;
+}
+
+#buttons {
 	margin-top: 10px;
 }
 
-.input button {
+#buttons button {
 	display:inline;
 	padding:.5em 1.5em;
 	font-size: 1rem;
@@ -43,28 +82,27 @@ main {
 	font-family:Lato;
 	color:#0c5449;
 }
-.input button:hover {
+#buttons button:hover {
 	background-color:#D1D1D1;
 }
 
-#input {
+input {
 	width: 100%;
 	font-size:20px;
-	background-color:#F2F2F2;
-	border: none;
-	border-bottom: 3px solid #F2CE57;
-	color:#0c5449;
+	background-color:#FFFFFF;
+	border: 1px solid #0c5449;
+	border-radius:3px;
+	color:#;
 }
 
-.output{
-	width:49%;	
-	display:inline-block;
-	text-align:right;
-	font-size:40px;
-	position:relative;
-	top:-40px;
+input:hover, input:focus {
+	-moz-box-shadow:    3px 3px   #ccc;
+  -webkit-box-shadow: 3px 3px   #ccc;
+  box-shadow:         3px 3px   #ccc;
 }
-
+input:focus {
+	background-color:#FFFFFF
+}
 
 footer {
 	background-color:rgb(9, 63, 57);
@@ -73,7 +111,6 @@ footer {
 	padding:0px 0px 10px 10px;
 	height:50px;
 }
-
 
 footer ul{
 	display:inline-block;
@@ -102,8 +139,8 @@ footer a:hover {
 
 @font-face {
     font-family: 'Lato';
-    src: url('assets/fonts/Lato-Regular.woff2') format('woff2'),
-		url('assets/fonts/Lato-Regular.woff') format('woff');
+    src: url('../assets/fonts/Lato-Regular.woff2') format('woff2'),
+		url('../assets/fonts/Lato-Regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
