@@ -1,7 +1,3 @@
-var imported = document.createElement('script'); // import conversion engine
-imported.src='src/convEngine.js'
-document.head.appendChild(imported);
-
 var app = new Vue({ 		//web app object
 	el: '#app',						
 	data:{
@@ -16,12 +12,12 @@ var app = new Vue({ 		//web app object
 		outUnitError:"",
 	},
 	methods:{
-		inValOnChange: function(){
-			if(isNaN(app.inVal)){
+		inValOnChange: function(){      //handle changes to the value input field
+			if(isNaN(app.inVal)){  				//if not a number output, error
 				document.getElementById("inVal").classList.add('inputError');
 				errorHandler(1);
 			}
-			else if(app.inVal<0){
+			else if(app.inVal<0){ 				//if less than 0 zero, error
 				document.getElementById("inVal").classList.add('inputError');
 				errorHandler(4);
 			}
@@ -31,19 +27,16 @@ var app = new Vue({ 		//web app object
 			}
 		},
 		inUnitOnChange: function(){
-			this.inUnitError="";
 		},
 		outUnitOnChange: function(){
-			this.outUnitError="";
 		},
 		convert: function(){
 			if(errorCheck()){
 				this.output="";
-				this.outputError="Error Invalid Input";
+				this.outputError="INVALID INPUT"
 				return;
 			}
 			this.outputError="";
-			this.outVal=this.inVal * 2000;
 			this.output=this.outVal + " " + this.outUnit;
 		},
 		clear: function(){ //revert to intial load state
@@ -63,7 +56,7 @@ var app = new Vue({ 		//web app object
 		},
 
 	},
-	directives: {
+	directives: { //focus on load
 		focus: {
 			inserted: function (el) {
 				el.focus();
@@ -72,7 +65,7 @@ var app = new Vue({ 		//web app object
 	}
 });
 
-function errorCheck(){
+function errorCheck(){ //call error handler with appropriate code and return error status
 	var isError=false;
 	if(isNaN(app.inVal)){
 		document.getElementById("inVal").classList.add('inputError');
@@ -91,36 +84,39 @@ function errorCheck(){
 		isError=true;
 		errorHandler(2);
 	}
-	else document.getElementById("inUnit").classList.remove('inputError');
+	else {
+		document.getElementById("inUnit").classList.remove('inputError');
+		app.inUnitError="";
+	}
 	if(!isUnit(app.outUnit)){
 		document.getElementById("outUnit").classList.add('inputError');
 		isError=true;
 		errorHandler(3);
 	}	
-	else document.getElementById("outUnit").classList.remove('inputError');
-	if(isError) return 1;
 	else {
-		errorHandler(0);
-		return 0;
+		document.getElementById("outUnit").classList.remove('inputError');
+		app.outUnitError="";
 	}
+
+	return isError;
 }
 
-function errorHandler(code) {
+function errorHandler(code) { //output error messages
 	switch(code){
 		case 0:
 			app.inValError="";
 			break;	
 		case 1:
-			app.inValError="input decimal number only";
+			app.inValError="invalid input";
 			break;
 		case 2:
-			app.inUnitError="invalid distance unit";
+			app.inUnitError="invalid unit";
 			break;
 		case 3:
-			app.outUnitError="invalid distance unit";
+			app.outUnitError="invalid unit";
 			break;
 		case 4: 
-			app.inValError="value must be greater than 0";
+			app.inValError="less than 0";
 			break;
 		default:
 			app.outputError="unknown error";
@@ -130,6 +126,13 @@ function errorHandler(code) {
 }
 
 function isUnit(unit){ //verfiy unit input validity
-	if(unit) return true;
-	else return false;
+	for(i=0;i<metricbig.length; i++)
+		if(unit === metricbig[i][0] || unit === metricbig[i][1]+"meters") return true;
+
+	for(i=0;i<imperialDistances.length; i++)
+		if(unit === imperialDistances[i][0] || unit === imperialDistances[i][1]) return true;
+	return false;
 }
+
+
+

@@ -1,10 +1,51 @@
+html {
+	font-family: Lato;
+}
 header {
 	font-size:30px;
-	font-family: Lato;
 	padding: 10px;
 	background-color:rgb(9, 63, 57);
 	color:#FFFFFF;
+	margin-bottom:0;
 }
+
+nav {
+	background-color:#ffeeba;
+}
+
+nav a {
+	text-decoration:none;
+	padding:0px 6px 6px 6px;
+}
+
+nav a:link{
+	color:rgb(9, 63, 57);
+}
+
+nav a:visited{
+	color:rgb(9, 63, 57);
+}
+
+nav a:hover{
+	color:#0c5449;
+	border-bottom: 1px solid #0c5449;
+}
+
+nav a .active{
+	color:#0c5449;
+	border-bottom: 1px solid #0c5449;
+}
+
+nav ul{
+	padding:5px 5px 5px 0px;
+	margin:0;
+} 
+
+nav li {
+	padding-right:20px;
+	display:inline-block;
+}
+
 
 html, body {
 	background-color:#FFFFFF;
@@ -14,18 +55,16 @@ html, body {
 .wrapper {
 	min-height:calc(100% - 60px);
 }
+
 main {
 	color:#0c5449;
-	padding-left:10px;
 	margin-left:50px;
 	margin-right:50px;
-	padding-bottom:50px;
-	padding-top: 100px;
+	padding:30px 0px 50px 10px;
 }
 
 #input, #output {
 	display: inline-block;
-	width:40%;
 }
 
 #input {
@@ -62,8 +101,8 @@ main {
 } 
 
 #outVal {
-	padding-bottom:37px;
-	font-size:30px;
+	padding-bottom:39px;
+	font-size:20px;
 	text-align:right;
 }
 
@@ -73,26 +112,26 @@ main {
 
 #buttons button {
 	display:inline;
-	padding:.5em 1.5em;
+	width:120px;
+	padding:.5em 0em;
 	font-size: 1rem;
 	font-weight:700;
 	border:none;
 	border-radius:3px;
 	background-color:#E1E1E1;
-	font-family:Lato;
 	color:#0c5449;
 }
+
 #buttons button:hover, #buttons button:focus {
 	background-color:#D1D1D1;
 }
 
 input {
-	width: 100%;
+	width:180px;
 	font-size:20px;
 	background-color:#FFFFFF;
 	border: 1px solid #0c5449;
 	border-radius:3px;
-	color:#;
 }
 
 input:hover, input:focus {
