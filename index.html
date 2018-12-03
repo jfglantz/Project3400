@@ -7,7 +7,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<link rel="stylesheet" href="css/styles.css">
- master
+		<link rel="icon" href="assets/favicon.ico">
 
 		<datalist id="units">
 			<option value="yoctometers">
@@ -41,7 +41,6 @@
 	</head>
 
 	<body id="device size">
-
 		<div class="wrapper">
 
 			<header>
@@ -67,7 +66,8 @@
 									Input Value
 								</div>
 								<div class="error">
-									{{inValError}}
+									
+									<span v-cloak> {{inValError}}</span>
 								</div>
 							</div>
 						</div>
@@ -79,14 +79,14 @@
 									Input Unit
 								</div>
 								<div class="error">
-									{{inUnitError}}
+									<span v-cloak>{{inUnitError}}</span>
 								</div>
 							</div>
 						</div>
 					</div>
 
 					<div id="output">
-						<div id="outVal">
+						<div id="outVal" v-cloak>
 							{{output}}
 							<span class="error">{{outputError}}</span>
 						</div>
@@ -97,7 +97,7 @@
 									Target Unit
 								</div>
 								<div class="error">
-									{{outUnitError}}
+									<span v-cloak>{{outUnitError}}</span>
 								</div>
 							</div>
 						</div>
@@ -121,6 +121,8 @@
 				</ul>
 				<div class="copyright">&copy; Glantz &amp; Reiber 2018 </div>
 			</footer>
+
+			
 	</body>
 		
 </html>

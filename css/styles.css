@@ -1,21 +1,28 @@
+[v-cloak] {
+	display:none;
+}
+
 html {
 	font-family: Lato;
 }
+
 header {
-	font-size:30px;
-	padding: 10px;
+	font-size:2.4em;
+	padding: .3em;
 	background-color:rgb(9, 63, 57);
 	color:#FFFFFF;
 	margin-bottom:0;
 }
 
 nav {
+	font-size:1.2em;
 	background-color:#ffeeba;
+	padding-left:.4em;
 }
 
 nav a {
 	text-decoration:none;
-	padding:0px 6px 6px 6px;
+	padding:0em .4em .3em .4em;
 }
 
 nav a:link{
@@ -28,21 +35,22 @@ nav a:visited{
 
 nav a:hover{
 	color:#0c5449;
-	border-bottom: 1px solid #0c5449;
+	border-bottom: .05em solid #0c5449;
+	font-weight:bold;
 }
 
-nav a .active{
+nav .active{
 	color:#0c5449;
-	border-bottom: 1px solid #0c5449;
+	border-bottom: .05em solid #0c5449;
 }
 
 nav ul{
-	padding:5px 5px 5px 0px;
+	padding:.24em .24em .24em 0;
 	margin:0;
 } 
 
 nav li {
-	padding-right:20px;
+	padding-right:1.5em;
 	display:inline-block;
 }
 
@@ -53,14 +61,14 @@ html, body {
 	margin:0;
 }
 .wrapper {
-	min-height:calc(100% - 60px);
+	min-height:calc(100% - 3.7em);
 }
 
 main {
 	color:#0c5449;
-	margin-left:50px;
-	margin-right:50px;
-	padding:30px 0px 50px 10px;
+	margin-left:3em;
+	margin-right:3em;
+	padding:3em 0 3.7em .7em;
 }
 
 #input, #output {
@@ -68,7 +76,7 @@ main {
 }
 
 #input {
-	padding-right:40px;
+	padding-right:2em;
 }
 
 .formItem{
@@ -76,16 +84,16 @@ main {
 }
 
 .label, .formItem .error {
-	padding-top:3px;
+	padding-top:.3em;
 	display:inline-block;
-	font-size:12px;
+	font-size:1em;
 }
 
 .label {
 	float:left;
 }
 #inValLabel {
-	padding-bottom:30px;
+	padding-bottom:1.7em;
 }
 
 .formItem .error {
@@ -101,7 +109,7 @@ main {
 } 
 
 #outVal {
-	padding-bottom:39px;
+	padding-bottom:2.25em;
 	font-size:20px;
 	text-align:right;
 }
@@ -131,7 +139,7 @@ input {
 	font-size:20px;
 	background-color:#FFFFFF;
 	border: 1px solid #0c5449;
-	border-radius:3px;
+	border-radius:2px;
 }
 
 input:hover, input:focus {
@@ -175,6 +183,7 @@ footer a:hover {
 	font-size:12px;
 	font-style:italic;
 }
+
 
 @font-face {
     font-family: 'Lato';
