@@ -1,0 +1,194 @@
+[v-cloak] {
+	display:none;
+}
+
+html {
+	font-family: Lato;
+}
+
+header {
+	font-size:2.4em;
+	padding: .3em;
+	background-color:rgb(9, 63, 57);
+	color:#FFFFFF;
+	margin-bottom:0;
+}
+
+nav {
+	font-size:1.2em;
+	background-color:#ffeeba;
+	padding-left:.4em;
+}
+
+nav a {
+	text-decoration:none;
+	padding:0em .4em .3em .4em;
+}
+
+nav a:link{
+	color:rgb(9, 63, 57);
+}
+
+nav a:visited{
+	color:rgb(9, 63, 57);
+}
+
+nav a:hover{
+	color:#0c5449;
+	border-bottom: .05em solid #0c5449;
+	font-weight:bold;
+}
+
+nav .active{
+	color:#0c5449;
+	border-bottom: .05em solid #0c5449;
+}
+
+nav ul{
+	padding:.24em .24em .24em 0;
+	margin:0;
+} 
+
+nav li {
+	padding-right:1.5em;
+	display:inline-block;
+}
+
+
+html, body {
+	background-color:#FFFFFF;
+	height:100%;
+	margin:0;
+}
+.wrapper {
+	min-height:calc(100% - 3.7em);
+}
+
+main {
+	color:#0c5449;
+	margin-left:3em;
+	margin-right:3em;
+	padding:3em 0 3.7em .7em;
+}
+
+#input, #output {
+	display: inline-block;
+}
+
+#input {
+	padding-right:2em;
+}
+
+.formItem{
+	display:block;
+}
+
+.label, .formItem .error {
+	padding-top:.3em;
+	display:inline-block;
+	font-size:1em;
+}
+
+.label {
+	float:left;
+}
+#inValLabel {
+	padding-bottom:1.7em;
+}
+
+.formItem .error {
+	float:right;
+}
+
+.error  {
+	color:#cc0000;
+}
+
+.inputError {
+	border-color:#cc0000;
+} 
+
+#outVal {
+	padding-bottom:2.25em;
+	font-size:20px;
+	text-align:right;
+}
+
+#buttons {
+	margin-top: 10px;
+}
+
+#buttons button {
+	display:inline;
+	width:120px;
+	padding:.5em 0em;
+	font-size: 1rem;
+	font-weight:700;
+	border:none;
+	border-radius:3px;
+	background-color:#E1E1E1;
+	color:#0c5449;
+}
+
+#buttons button:hover, #buttons button:focus {
+	background-color:#D1D1D1;
+}
+
+input {
+	width:180px;
+	font-size:20px;
+	background-color:#FFFFFF;
+	border: 1px solid #0c5449;
+	border-radius:2px;
+}
+
+input:hover, input:focus {
+	-moz-box-shadow:    3px 3px   #ccc;
+  -webkit-box-shadow: 3px 3px   #ccc;
+  box-shadow:         3px 3px   #ccc;
+}
+input:focus {
+	background-color:#FFFFFF
+}
+
+footer {
+	background-color:rgb(9, 63, 57);
+	font-size:12px;
+	color:#b1c5c3;
+	padding:0px 0px 10px 10px;
+	height:50px;
+}
+
+footer ul{
+	display:inline-block;
+	padding-right:10px;
+	padding-left:0px;
+}
+
+footer li{
+	list-style-type:none;
+}
+
+footer a {
+	color:#b1c5c3;
+	text-decoration:none;
+}
+
+footer a:hover {
+	text-decoration:underline;
+}
+
+.copyright{
+	text-align:center;
+	font-size:12px;
+	font-style:italic;
+}
+
+
+@font-face {
+    font-family: 'Lato';
+    src: url('../assets/fonts/Lato-Regular.woff2') format('woff2'),
+		url('../assets/fonts/Lato-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

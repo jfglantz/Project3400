@@ -2,41 +2,130 @@
 
 <html lang=en>
 	<head>
-		<title>Natural Language Unit Converter</title>
+		<title>Easy Distance Unit Converter</title>
 
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<link rel="stylesheet" href="styles.css">
-		<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+		<link rel="stylesheet" href="css/styles.css">
+		<link rel="icon" href="assets/favicon.ico">
 
+		<datalist id="units">
+			<option value="yoctometers">
+			<option value="zeptometers">
+			<option value="attometers">
+			<option value="femtometers">
+			<option value="picometers">
+			<option value="nanometers">
+			<option value="micrometers">
+			<option value="millimeters">
+			<option value="centimeters">
+			<option value="decimeters">
+			<option value="meters">
+			<option value="decameters">
+			<option value="hectometers">
+			<option value="kilometers">
+			<option value="megameters">
+			<option value="gigameters">
+			<option value="terameters">
+			<option value="petameters">
+			<option value="exameters">
+			<option value="zettameters">
+			<option value="yottameters">
+			<option value="inches">
+			<option value="feet">
+			<option value="foot">
+			<option value="yards">
+			<option value="miles">
+			<option value="league">
+		</datalist>
 	</head>
 
 	<body id="device size">
 		<div class="wrapper">
+
 			<header>
-				Natural Language Unit Converter
+				Easy Distance Unit Converter
 			</header>
+			<nav>
+				<ul>
+					<li><a href="index.html" class="active">Home</a></li>
+					<li><a href="about.html">About</a></li>
+					<li><a href="team.html">Team</a></li>
+				</ul>
+			</nav>
+
 			<main id="app">
-					<div class="input">
-						<input type="text" v-model="input" id="input" placeholder="Enter Conversion Here"></input>
+
+				<div id="fourSqaure">
+
+					<div id="input"> 
+						<div class="formItem">
+							<input type="text" v-focus v-model="inVal" id="inVal" placeholder="a decimal number" @paste="inValOnChange" @keydown="inValOnChange" @keyup="inValOnChange" @cut="inValOnChange" @keydown.enter="convert"></input>
+							<div class="description">
+								<div class="label" id="inValLabel">
+									Input Value
+								</div>
+								<div class="error">
+									
+									<span v-cloak> {{inValError}}</span>
+								</div>
+							</div>
+						</div>
 						<br/>
-						<div class="buttons">
-							<button type="button" name="Convert" @mousedown="convert">Convert</button>
-							<button type="button" name="Clear" @mousedown="clear">Clear</button>
+						<div class="formItem">
+							<input type="text" list="units" v-model="inUnit" id="inUnit" placeholder="a distance unit" @paste="inUnitOnChange" @keydown="inUnitOnChange" @cut="inUnitOnChange" @keyup="inUnitOnChange" @keydown.enter="convert"></input>
+							<div class="description">
+								<div class="label">
+									Input Unit
+								</div>
+								<div class="error">
+									<span v-cloak>{{inUnitError}}</span>
+								</div>
+							</div>
 						</div>
 					</div>
-					<div class="output">
-						{{output}}
-					</div>
-			</main>
-				</div>
-				<footer>
-					<ul>
-						<li><a href="https://wayne.edu/people/fy7555/">Advising Professor</a></li>
-					</ul>
-					<div class="copyright">&copy; Glantz &amp; Reiber 2018 </div>
-				</footer>
-	</body>
 
-	<script src="app.js"></script>
+					<div id="output">
+						<div id="outVal" v-cloak>
+							{{output}}
+							<span class="error">{{outputError}}</span>
+						</div>
+						<div class="formItem" >
+							<input type="text" list="units"  v-model="outUnit" id="outUnit" placeholder="a distance unit" @paste="outUnitOnChange" @keydown="outUnitOnChange" @cut="outUnitOnChange" @change="outUnitOnChange" @keyup="outUnitOnChange" @keydown.enter="convert"></input>
+							<div class="description">
+								<div class="label">
+									Target Unit
+								</div>
+								<div class="error">
+									<span v-cloak>{{outUnitError}}</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<br/>
+
+					<div id="buttons">
+						<button type="button" name="Convert" @keydown.enter="convert" @mousedown="convert">Convert</button>
+						<button type="button" name="Clear" @keydown.enter="clear" @mousedown="clear">Clear</button>
+					</div>
+
+				</div>
+		</div>
+
+			</main>
+			</div>
+			<footer>
+				<ul>
+					<li><a href="https://wayne.edu/people/fy7555/">Advising Professor</a></li>
+				</ul>
+				<div class="copyright">&copy; Glantz &amp; Reiber 2018 </div>
+			</footer>
+
+			
+	</body>
+		
 </html>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script src="src/app.js"></script>
+<script src="src/engine.js"></script>
