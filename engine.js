@@ -1,7 +1,7 @@
 //modify these lines to your desired output unit  
 var desInpVal = 1;
 var desInpUnits = "m";
-var desOutUnits = "mi";
+var desOutUnits = "leag";
  
 //-----Do not modify things below this line------
 
@@ -49,13 +49,6 @@ var timeUnits = [["sec", "second", ], //todo finish section
                  ["", "eon", 3, -1, 3]]; //or aeon
 
 
-var unitImpDist = [["in", "inch", "inche"],
-                   ["ft", "foot", "feet"],
-                   ["yd", "yard", ""],
-                   ["mi", "mile"],
-                   ["leag", "leeg", "leage", "lege"]];
-
-
 
 //Constructor for conversion objects
 function UnitObject(arg1, arg2, arg3) {
@@ -73,6 +66,8 @@ function UnitObject(arg1, arg2, arg3) {
    this.unitSys = "unk";
 }
 
+//takes input object, base unit (such as "m"), and desired metric out unit
+//returns object
 function metricToMetric(inpObj, unitOperator, outMetricUnit)
 {
    var output = new UnitObject(inpObj);
@@ -100,7 +95,7 @@ function metricToMetric(inpObj, unitOperator, outMetricUnit)
    }
    else {
       output.units = "unitEEEEEError";
-      output.val = indexOutputUnit;
+      output.val = -999;
    }
    return output;
 }
@@ -123,6 +118,7 @@ function imperialDistToImperialDist (inpObj, outImpUnit)
          indexOutputUnit = i;
       }
    }
+   
    if ((indexInputUnit > -1) && (indexOutputUnit > -1)){
       output.val = inpObj.val;
       output.exp = inpObj.exp;
@@ -154,31 +150,33 @@ function imperialDistToImperialDist (inpObj, outImpUnit)
    }
    else { //todo remove this?
       output.val = -9;
-      output.units = "ERROR";
+      output.units = indexOutputUnit;
    }
    //return inpObj;
    return output;
 }
 
-function metricToImperialDist(inpObj, outImpUnit)
+//takes input of an input object and an output object
+//outputs an object
+function metricToImperialDist(inpObj, outpObj)
 {
    var a = new UnitObject(0,0,0);
    var key = 2.54; //2.54cm = 1 inch
    a = metricToMetric(inpObj, "m", "cm"); //convert to cm
    a.val /= 2.54; //convert cm to in
    a.units = "in";
-   a = imperialDistToImperialDist(a, outImpUnit); //then convert to imperial
+   a = imperialDistToImperialDist(a, outpObj.units); //then convert to imperial
    return a;
 }
 
-function imperialToMetricDist(inpObj, outMetricUnit)
+function imperialToMetricDist(inpObj, outObj)
 {
    var a = new UnitObject(0,0,0);
    var key = 2.54; //2.54cm = 1 inch
    a = imperialDistToImperialDist(inpObj, "in"); //convert to inches
    a.val *= 2.54; //convert inches to cm
    a.units = "cm";
-   a = metricToMetric(a, "m", outMetricUnit); //then convert to metric
+   a = metricToMetric(a, "m", outObj.units); //then convert to metric
    return a;
 }
 
@@ -247,16 +245,16 @@ function scanUnitTable (inpObj, typeParam) {
    
    switch(typeParam){
          
-      case "dist":
+      case "distance":
          for (i = 0; i < imperialDistances.length; i++){
             if (imperialDistances[i][0] == inpObj.units){
                inpObj.unitSys = "imperial";
-               inpObj.unitType = "dist";
+               inpObj.unitType = "distance";
                return true;
             }
             else if (imperialDistances[i][1] == inpObj.units){
                inpObj.unitSys = "imperial";
-               inpObj.unitType = "dist";
+               inpObj.unitType = "distance";
                inpObj.units = imperialDistances[i][0]; //from miles to "mi"
                return true;                 
             }
@@ -266,12 +264,12 @@ function scanUnitTable (inpObj, typeParam) {
          {
             if (metricbig[i][0].concat("m") == inpObj.units){
                inpObj.unitSys = "metric";
-               inpObj.unitType = "dist";
+               inpObj.unitType = "distance";
                return true;
          } 
             else if (metricbig[i][1].concat("meter") == inpObj.units){
                inpObj.unitSys = "metric";
-               inpObj.unitType = "dist";
+               inpObj.unitType = "distance";
                inpObj.units = metricbig[i][0].concat("m"); //from "centimeters" to "cm"
                return true;
             } 
@@ -279,7 +277,7 @@ function scanUnitTable (inpObj, typeParam) {
          break;
              
          
-      case "temp":
+      case "temperature":
          
          break;
       
@@ -289,57 +287,56 @@ function scanUnitTable (inpObj, typeParam) {
    return false;
 }
 
+function convertUnits (inpObj, outpObj){
+   
 
-//initialize input
-
-var inp = new UnitObject(desInpVal, 0, desInpUnits);
-
-var proc = metricToMetric(inp, "m", desOutUnits);
-
-var impTestInp = new UnitObject(44, 0, "in");
-var impTestOut = "ft";
-/*
-var impTest = new UnitObject(0,0,0);
-impTest = imperialDistToImperialDist(impTestInp, impTestOut);
-
-var mti = new UnitObject(33, 0, "cm");
-var mtiout = new UnitObject(mti);
-mtiout = metricToImperialDist(mti, "in");
-*/
-var scantestobj = new UnitObject(desInpVal, 0, desInpUnits);
-var scantestdisp = (desInpVal, 0, desInpUnits);
-var outunitobj = new UnitObject(0, 0, desOutUnits);
-var outp = new UnitObject(scantestobj);
-
-if (scanUnitTable(scantestobj, "dist")){
-   if (scanUnitTable(outunitobj, "dist")){
-      //then both are distances. proceed
-      if (scantestobj.unitSys == "imperial"){
-          if (outunitobj.unitSys == "imperial"){
-             outp = imperialDistToImperialDist(scantestobj, desOutUnits);
-          }
-          else if (outunitobj.unitSys == "metric"){
-             outp = imperialToMetricDist(scantestobj, desOutUnits);
-          }
+   if (scanUnitTable(inpObj, "distance")){
+      if (scanUnitTable(outpObj, "distance")){
+         convertDistance(inpObj, outpObj);
       }
-      else if (scantestobj.unitSys == "metric"){
-         if (outunitobj.unitSys == "imperial"){
-            outp = metricToImperialDist(scantestobj, desOutUnits);
-         }
-         else if (outunitobj.unitSys == "metric"){
-            outp = metricToMetric(scantestobj, "m", desOutUnits);
+      else {
+         
+      }
+   }
+   if (scanUnitTable(inpObj, "temperature")){
+      if (scanUnitTable(outpObj, "temperature")){
+         switch(inpObj.units){
+               case:"F"
+               if ()
          }
       }
    }
-   else {
-      scantestobj.val = "First are unit of distance but not second!"
-   }
-}else {
-   scantestobj.val = -3333333333333333333333333333333333;
 }
 
-normalizeExponent(outp);
+//postconditions: modifies finalOutput, a global variable
+function convertDistance(inpObj, outpObj){
+   //var a = inpObj;
+   if (inpObj.unitSys == "imperial"){
+      if (outpObj.unitSys == "imperial"){
+         finalOutput = imperialDistToImperialDist(inpObj, outpObj.units);
+      }
+      else if (outpObj.unitSys == "metric"){
+         finalOutput = imperialToMetricDist(inpObj, outpObj)
+      }
+   }
+   else if (inpObj.unitSys == "metric"){
+      if (outpObj.unitSys == "imperial"){
+         finalOutput = metricToImperialDist(inpObj, outpObj);
+      }
+      else if (outpObj.unitSys == "metric"){
+         
+         //metricToMetric(inpObj, "m", outpObj.units);
+         //outpObj.val = 555;
+         finalOutput = metricToMetric(inpObj, "m", outpObj.units)
+      }
+   }
+}
 
 
-//external .js files need to be loaded before their function can be called
-//so put them in the header of the page
+
+var finalOutput = new UnitObject("",0,""); //global variable, init to dummy vals
+var inputObject = new UnitObject(desInpVal, 0, desInpUnits);
+var outputObject = new UnitObject(0, 0, desOutUnits);
+
+convertUnits(inputObject, outputObject);
+normalizeExponent(finalOutput);
