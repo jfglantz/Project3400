@@ -47,11 +47,13 @@
 				Easy Distance Unit Converter
 			</header>
 			<nav>
+				<div id="navwrap">
 				<ul>
 					<li><a href="index.html" class="active">Home</a></li>
 					<li><a href="about.html">About</a></li>
 					<li><a href="team.html">Team</a></li>
 				</ul>
+				</div>
 			</nav>
 
 			<main id="app">
@@ -71,7 +73,6 @@
 								</div>
 							</div>
 						</div>
-						<br/>
 						<div class="formItem">
 							<input type="text" list="units" v-model="inUnit" id="inUnit" placeholder="a distance unit" @paste="inUnitOnChange" @keydown="inUnitOnChange" @cut="inUnitOnChange" @keyup="inUnitOnChange" @keydown.enter="convert"></input>
 							<div class="description">
@@ -86,9 +87,11 @@
 					</div>
 
 					<div id="output">
-						<div id="outVal" class="desktop" v-cloak>
-							{{output}}
+						<div id="outVal" class="desktop">
+							<div v-cloak>
+								{{output}}
 							<span class="error">{{outputError}}</span>
+							</div>
 						</div>
 						<div class="formItem" >
 							<input type="text" list="units"  v-model="outUnit" id="outUnit" placeholder="a distance unit" @paste="outUnitOnChange" @keydown="outUnitOnChange" @cut="outUnitOnChange" @change="outUnitOnChange" @keyup="outUnitOnChange" @keydown.enter="convert"></input>
@@ -101,9 +104,9 @@
 								</div>
 							</div>
 						</div>
-						<div id="outVal" class="mobile" v-cloak>
-							{{output}}
-							<span class="error">{{outputError}}</span>
+						<div id="outVal" class="mobile">
+							<span v-cloak>{{output}}</span>
+							<span v-cloak><span class="error">{{outputError}}</span></span>
 						</div>
 					</div>
 

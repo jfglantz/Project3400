@@ -200,3 +200,89 @@ footer a:hover {
     font-weight: normal;
     font-style: normal;
 } 
+
+@media only screen and (max-width: 1024px) {
+	body {
+		padding:0;
+		margin:0;
+		background-image:none;
+	}
+	.wrapper {
+		width:auto;
+		min-width:0;
+		box-shadow:none;
+	}
+	main {
+		padding:1em;
+		padding-top:2em;
+		margin:0;
+		font-size:90%;
+	}
+	footer {
+		margin:0;
+	}
+
+	.desktop {
+		display:none;
+	}
+
+	.mobile {
+		display:block;
+	}
+
+	#input, #output {
+		display:block;
+		padding:0;
+	}
+
+	input {
+		width:100%;
+	}
+	
+	.formItem {
+		padding-bottom:4em;
+	}
+
+	#inValLabel {
+		padding-bottom:0;
+	}
+	header {
+		text-align:center;
+	}
+
+	#navwrap {
+		text-align:center;
+	}
+
+	nav {
+		margin: 0 auto;
+		display:block;
+		padding-left:0;
+	}
+
+	nav ul {
+		margin: 0 auto;
+		display: block;
+		padding 0;
+	}
+
+	nav li {
+		width:30%;
+		padding-left:0;
+		padding-right:0;
+	}
+
+	nav a {
+		text-decoration:none;
+	}
+	#buttons button {
+		margin-bottom:.5em;
+	}
+
+	#buttons {
+		margin: 0
+	}
+	#outVal {
+		text-align:left;
+	}
+}

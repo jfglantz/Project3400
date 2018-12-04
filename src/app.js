@@ -167,6 +167,6 @@ var impDistSpell = [
 	["ft", "foot", "feet" ],
 	["yd", "yard", "yards", "yds"],
 	["mi", "mile", "miles", "moles"],
-	["leage", "league", "leagues", "leges"]
+	["leag", "league", "leagues", "leges"]
 ];
 
