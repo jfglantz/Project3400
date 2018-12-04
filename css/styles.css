@@ -7,7 +7,7 @@ html {
 }
 
 header {
-	font-size:2.4em;
+	font-size:3.3em;
 	padding: .3em;
 	background-color:rgb(9, 63, 57);
 	color:#FFFFFF;
@@ -15,7 +15,7 @@ header {
 }
 
 nav {
-	font-size:1.2em;
+	font-size:1.5em;
 	background-color:#ffeeba;
 	padding-left:.4em;
 }
@@ -72,7 +72,7 @@ main {
 }
 
 p {
-	font-size:1.2em;
+	font-size:1.5em;
 	color:#000000;
 }
 
@@ -114,8 +114,8 @@ p {
 } 
 
 #outVal {
-	padding-bottom:2.25em;
-	font-size:20px;
+	padding-bottom:1.7em;
+	font-size:1.7em;
 	text-align:right;
 }
 
@@ -125,9 +125,10 @@ p {
 
 #buttons button {
 	display:inline;
-	width:120px;
+	width:8em;
+	margin-right:.5em;
 	padding:.5em 0em;
-	font-size: 1rem;
+	font-size: 1.2em;
 	font-weight:700;
 	border:none;
 	border-radius:3px;
@@ -140,10 +141,10 @@ p {
 }
 
 input {
-	width:180px;
-	font-size:20px;
+	width:10em;
+	font-size:2em;
 	background-color:#FFFFFF;
-	border: 1px solid #0c5449;
+	border: .07em solid #0c5449;
 	border-radius:2px;
 }
 
@@ -158,7 +159,7 @@ input:focus {
 
 footer {
 	background-color:rgb(9, 63, 57);
-	font-size:12px;
+	font-size:.8em;
 	color:#b1c5c3;
 	padding:0px 0px 10px 10px;
 	height:50px;
