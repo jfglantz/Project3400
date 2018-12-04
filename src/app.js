@@ -30,22 +30,25 @@ var app = new Vue({ 		//web app object
 		outUnitOnChange: function(){
 		},
 		convert: function(){
+			this.outputError="";
 			if(errorCheck()){
 				this.output="";
 				this.outputError="INVALID INPUT"
 				return;
 			}
-			var box1val = this.inVal;
+			var box1val = parseFloat(this.inVal);
 			var userInputUnits = this.inUnit; 
 			var userOutputUnits = this.outUnit;
 
-			var finalOutput = new UnitObject("",0,""); //global variable, init to dummy vals
+			finalOutput = new UnitObject("",0,""); //global variable, init to dummy vals
 			var inputObject = new UnitObject(box1val, 0, userInputUnits);
 			var outputObject = new UnitObject(0, 0, userOutputUnits);
 
 			convertUnits(inputObject, outputObject);
+			
+
 			normalizeExponent(finalOutput);
-			this.output = finalOutput.val;
+			this.output = finalOutput.val + " " + outputObject.units;
 		},
 		clear: function(){ //revert to intial load state
 			this.output="";
@@ -164,5 +167,5 @@ var impDistSpell = [
 	["yd", "yard", "yards", "yds"],
 	["mi", "mile", "miles", "moles"],
 	["leage", "league", "leagues", "leges"]
-]
+];
 

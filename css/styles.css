@@ -71,6 +71,11 @@ main {
 	padding:3em 0 3.7em .7em;
 }
 
+p {
+	font-size:1.2em;
+	color:#000000;
+}
+
 #input, #output {
 	display: inline-block;
 }
