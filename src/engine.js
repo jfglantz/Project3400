@@ -1,10 +1,3 @@
-//modify these lines to your desired output unit  
-var desInpVal = 1;
-var desInpUnits = "m";
-var desOutUnits = "leag";
- 
-//-----Do not modify things below this line------
-
 //[abbreviation, prefix, product, exponent]  
 var metricbig = [["y", "yocto", 0, -24],
                 ["z", "zepto", 1, -21],
@@ -34,19 +27,6 @@ var imperialDistances = [["in", "inch", 1, 1, -1],
                         ["yd", "yard", 3, -1, 1],
                         ["mi", "mile", 5280, 4, 1],
                         ["leag", "league", 3, -1, 3]]; //a league is three miles   
-
-//[abbreviation, prefix, product, index for next larger unit, index of reference unit]  
-//for instance, miles is in terms of feet, and feet is at index 1 so miles has reference to index 1
-var timeUnits = [["sec", "second", ], //todo finish section
-                 ["min", "minute", 12, 3, 0],
-                 ["hr", "hour", 3, -1, 1],
-                 ["d", "day", 5280, 4, 1],
-                 ["wk", "week", 3, -1, 3],
-                 ["mo", "month", 3, -1, 3],
-                 ["yr", "year", 3, -1, 3],
-                 ["", "decade", 3, -1, 3],
-                 ["", "century", 3, -1, 3],
-                 ["", "eon", 3, -1, 3]]; //or aeon
 
 
 
@@ -145,8 +125,6 @@ function imperialDistToImperialDist (inpObj, outImpUnit)
             }
          }
       } 
-      
-      //output.val = -666;
    }
    else { //todo remove this?
       output.val = -9;
@@ -234,6 +212,7 @@ function normalizeExponent(inpObj)
       }
       else if (inpObj.val < 1){
          inpObj.val *= 10;
+         inpObj += 0.000000001;
          --inpObj.exp;
       }
    }
@@ -276,13 +255,13 @@ function scanUnitTable (inpObj, typeParam) {
          }
          break;
              
-         
+      /*   
       case "temperature":
          
          break;
       
                 
-
+*/
    }
    return false;
 }
@@ -298,6 +277,7 @@ function convertUnits (inpObj, outpObj){
          
       }
    }
+   /*
    if (scanUnitTable(inpObj, "temperature")){
       if (scanUnitTable(outpObj, "temperature")){
          switch(inpObj.units){
@@ -305,6 +285,7 @@ function convertUnits (inpObj, outpObj){
          }
       }
    }
+   */
 }
 
 //postconditions: modifies finalOutput, a global variable
@@ -323,9 +304,6 @@ function convertDistance(inpObj, outpObj){
          finalOutput = metricToImperialDist(inpObj, outpObj);
       }
       else if (outpObj.unitSys == "metric"){
-         
-         //metricToMetric(inpObj, "m", outpObj.units);
-         //outpObj.val = 555;
          finalOutput = metricToMetric(inpObj, "m", outpObj.units)
       }
    }
