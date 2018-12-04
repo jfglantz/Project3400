@@ -73,16 +73,17 @@ var app = new Vue({ 		//web app object
 
 function errorCheck(){ //call error handler with appropriate code and return error status
 	var isError=false;
-	if(isNaN(app.inVal)){
+	if(isNaN(app.inVal) || app.inVal<0 || app.inVal===null || app.inVal===""){
 		isError=true;
-		errorHandler(1);
+		if(app.inVal<0){
+			errorHandler(4);
+		}
+		if(app.inVal===null || app.inVal ===""){
+			errorHandler(6);
+		}
+		else errorHandler(1);
 	}
-	else document.getElementById("inVal").classList.remove('inputError');
-	if(app.inVal<0){
-		isError=true;
-		errorHandler(4);
-	}
-	else document.getElementById("inVal").classList.remove('inputError');
+	else document.getElementById("inVal").classList.remove('inputError');	
 	if(!isUnit(app.inUnit)){
 		isError=true;
 		errorHandler(2);
@@ -138,7 +139,13 @@ function errorHandler(code) { //output error messages
 			app.inUnitError="incompatible";
 			app.UnitError="incompatible units";
 			app.outputError="incompatible units";
-
+			break;
+		case 6:
+			app.output="";
+			app.inValError="must have value";
+			app.outputError="Value field empty";
+			document.getElementById("inVal").classList.add('inputError');
+			break;
 		default: //some bad input
 			app.outputError="unknown error";
 			break;
@@ -166,6 +173,12 @@ function isUnit(unit){ //verfiy unit input validity
 		}
 	}
 
+	//	for(i=0; i<tempUnit.length; i++){
+	//		for(j=0; j<tempUnit[i].length; j++){
+	//			if(unit === tempUnit[i][j]) return tempUnit[i][0];
+	//		}
+	//	}
+
 	return false;
 }
 
@@ -176,4 +189,10 @@ var impDistSpell = [
 	["mi", "mile", "miles", "moles"],
 	["leag", "league", "leagues", "leges"]
 ];
+
+var tempUnit = [
+	["C", "c", "cels", "Cels", "celsius", "Celsius"],
+	["F", "f", "fahr", "fahrenheit", "Fahrenheit"],
+	["K", "k", "Kelvin", "kel"]
+]
 
