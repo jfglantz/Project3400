@@ -308,13 +308,3 @@ function convertDistance(inpObj, outpObj){
       }
    }
 }
-
-	
-
-var finalOutput = new UnitObject("",0,""); //global variable, init to dummy vals
-var inputObject = new UnitObject(desInpVal, 0, desInpUnits);
-var outputObject = new UnitObject(0, 0, desOutUnits);
-
-convertUnits(inputObject, outputObject);
-normalizeExponent(finalOutput);
-	

@@ -189,6 +189,9 @@ footer a:hover {
 	font-style:italic;
 }
 
+.mobile {
+	display:none;
+}
 
 @font-face {
     font-family: 'Lato';
@@ -196,4 +199,4 @@ footer a:hover {
 		url('../assets/fonts/Lato-Regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-}
+} 

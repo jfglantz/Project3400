@@ -48,7 +48,8 @@ var app = new Vue({ 		//web app object
 			
 
 			normalizeExponent(finalOutput);
-			this.output = finalOutput.val + " " + outputObject.units;
+			outVal = finalOutput.val * Math.pow(10, finalOutput.exp);
+			this.output = outVal + " " + finalOutput.units;
 		},
 		clear: function(){ //revert to intial load state
 			this.output="";

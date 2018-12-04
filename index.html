@@ -86,7 +86,7 @@
 					</div>
 
 					<div id="output">
-						<div id="outVal" v-cloak>
+						<div id="outVal" class="desktop" v-cloak>
 							{{output}}
 							<span class="error">{{outputError}}</span>
 						</div>
@@ -100,6 +100,10 @@
 									<span v-cloak>{{outUnitError}}</span>
 								</div>
 							</div>
+						</div>
+						<div id="outVal" class="mobile" v-cloak>
+							{{output}}
+							<span class="error">{{outputError}}</span>
 						</div>
 					</div>
 
