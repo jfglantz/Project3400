@@ -151,10 +151,14 @@ function isUnit(unit){ //verfiy unit input validity
 		if(unit === metricbig[i][0] + "m" || unit === metricbig[i][1]+"meters" || unit === metricbig[i][1]+"meter") {		
 			return metricbig[i][0] +"m";
 		}
-		else if (unit.toLowerCase()===metricbig[i][1]+"meters" ||unit.toLowerCase()===metricbig[i][1]+"meter" ){
+	}
+
+	for(i=0; i<metricbig.length; i++){
+		if (unit.toLowerCase()===metricbig[i][1]+"meters" ||unit.toLowerCase()===metricbig[i][1]+"meter" ){
 			return metricbig[i][0]+"m";
 		}
 	}
+
 
 	for(i=0; i<impDistSpell.length; i++){
 		for(j=0; j<impDistSpell[i].length; j++){
