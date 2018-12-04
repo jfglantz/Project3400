@@ -277,15 +277,50 @@ function convertUnits (inpObj, outpObj){
          
       }
    }
-   /*
+
    if (scanUnitTable(inpObj, "temperature")){
       if (scanUnitTable(outpObj, "temperature")){
-         switch(inpObj.units){
-               case"F":
+         if (inpObj.units == "F"){
+            switch(outpObj){
+               case "C":
+                  finalOutput = farhenheitToCelcius(inpObj);
+                  break;
+               case "K":
+                  finalOutput = farhenheitToKelvin(inpObj);
+                  break;
+               default:
+                  finalOutput = inpObj;
+            } 
+         }
+         else if (inpObj.units == "C"){
+            switch(outpObj){
+               case "F":
+                  finalOutput = celsiusToFahrenheit(inpObj);
+                  break;
+               case "K":
+                  finalOutput = celsiusToKelvin(inpObj);
+                  break;
+               default:
+                  finalOutput = inpObj;
+            } 
+         }
+         else if (inpObj.units == "K"){
+            switch(outpObj){
+               case "F":
+                  finalOutput = kelvinToFahrenheit(inpObj);
+                  break;
+               case "C":
+                  finalOutput = kelvinToCelsius(inpObj);
+                  break;
+               default:
+                  finalOutput = inpObj;
+            } 
+         }
+         else{ //default case, should not actually occur
+            finalOutput = inpObj;
          }
       }
    }
-   */
 }
 
 //postconditions: modifies finalOutput, a global variable
