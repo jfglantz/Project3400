@@ -301,8 +301,7 @@ function convertUnits (inpObj, outpObj){
    if (scanUnitTable(inpObj, "temperature")){
       if (scanUnitTable(outpObj, "temperature")){
          switch(inpObj.units){
-               case:"F"
-               if ()
+               case"F":
          }
       }
    }

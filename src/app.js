@@ -35,8 +35,17 @@ var app = new Vue({ 		//web app object
 				this.outputError="INVALID INPUT"
 				return;
 			}
-			this.outputError="";
-			this.output=this.outVal + " " + this.outUnit;
+			var box1val = this.inVal;
+			var userInputUnits = this.inUnit; 
+			var userOutputUnits = this.outUnit;
+
+			var finalOutput = new UnitObject("",0,""); //global variable, init to dummy vals
+			var inputObject = new UnitObject(box1val, 0, userInputUnits);
+			var outputObject = new UnitObject(0, 0, userOutputUnits);
+
+			convertUnits(inputObject, outputObject);
+			normalizeExponent(finalOutput);
+			this.output = finalOutput.val;
 		},
 		clear: function(){ //revert to intial load state
 			this.output="";
@@ -134,21 +143,24 @@ function errorHandler(code) { //output error messages
 }
 
 function isUnit(unit){ //verfiy unit input validity
-	for(i=0;i<metricbig.length; i++)
+	for(i=0; i<metricbig.length; i++){
 		if(unit === metricbig[i][0] + "m" || unit === metricbig[i][1]+"meters" || unit === metricbig[i][1]+"meter") {		
 			return metricbig[i][0] +"m";
 		}
-	for(i=0;i<impDistSpell.length; i++){
+	}
+
+	for(i=0; i<impDistSpell.length; i++){
 		for(j=0; j<impDistSpell[i].length; j++){
 			if(unit === impDistSpell[i][j])	return impDistSpell[i][0];
 		}
 	}
+
 	return false;
 }
 
 var impDistSpell = [
-	["in", "inch", "inches", "\""],
-	["ft", "foot", "feet", "\'"],
+	["in", "inch", "inches" ],
+	["ft", "foot", "feet" ],
 	["yd", "yard", "yards", "yds"],
 	["mi", "mile", "miles", "moles"],
 	["leage", "league", "leagues", "leges"]
