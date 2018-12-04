@@ -31,6 +31,8 @@ var app = new Vue({ 		//web app object
 		},
 		convert: function(){
 			this.outputError="";
+			this.inUnit = this.inUnit.toLowerCase();
+			this.outUnit = this.outUnit.toLowerCase();
 			if(errorCheck()){
 				this.output="";
 				this.outputError="INVALID INPUT"
