@@ -25,10 +25,6 @@ var app = new Vue({ 		//web app object
 				this.outputError="";
 			}
 		},
-		inUnitOnChange: function(){
-		},
-		outUnitOnChange: function(){
-		},
 		convert: function(){
 			this.outputError="";
 			if(errorCheck()){
